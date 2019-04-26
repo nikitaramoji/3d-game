@@ -1,0 +1,18 @@
+Shader.source[document.currentScript.src.split('js/shaders/')[1]] = `#version 300 es
+  in vec4 vertexPosition;
+  // retreive attribute 1 as vertexColor from Program, and then output it as color to FS
+  in vec4 vertexColor;
+  out vec4 color;
+  // adding triangle position 
+  uniform struct {
+    mat4 modelViewProjMatrix; 
+  } gameObject;
+
+  void main(void) {
+  	gl_Position = vertexPosition * gameObject.modelViewProjMatrix;
+    // gl_Position.x *= triangleScale;
+    // gl_Position.y *= triangleScale;
+    // gl_Position.xyz += trianglePosition;
+    color = vertexColor;
+  }
+`;

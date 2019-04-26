@@ -1,0 +1,13 @@
+Shader.source[document.currentScript.src.split('js/shaders/')[1]] = `#version 300 es
+  precision highp float;
+
+  // get vertex color from the vertex shader (color) and output that
+  out vec4 fragmentColor;
+  in vec4 color;
+  // use a uniform solid color to apply a tint
+  uniform vec4 solidColor;
+
+  void main(void) {
+    fragmentColor = solidColor * color;
+  }
+`;
